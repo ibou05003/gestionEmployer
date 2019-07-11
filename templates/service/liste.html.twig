@@ -1,0 +1,36 @@
+{% extends 'liste.html.twig' %}
+
+{% block title %}Liste Services {% endblock %}
+
+{% block body %}
+    {% block titre %}
+        <h1>Liste des Services</h1>
+    {% endblock %}
+
+        <table id="tableau" class="table table-bordered text-center table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Service</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set i=1 %}
+                {% for service in services  %}
+                    <tr>
+                        <td scope="row">{{ i }}</td>
+                        <td>{{ service.libelle }}</td>
+                        <td><a class="btn btn-outline-info" href="{{ path('info_service',{'id':service.id}) }}" role="button">Info</a></td>
+                        <td><a class="btn btn-outline-danger" href="#" role="button">Supprimer</a></td>
+                        <td><a class="btn btn-outline-primary" href="{{ path('edit_service',{'id':service.id}) }}" role="button">Modifier</a></td>
+                    </tr>
+                    {% set i=i+1 %}
+                {% endfor %}
+            </tbody>
+        </table>
+    
+
+{% endblock %}

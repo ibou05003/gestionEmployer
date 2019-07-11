@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Service {% endblock %}
+
+{% block body %}
+    {% block titre %}
+        <h1>
+        {% if editMode %}
+        Ajout
+        {% else %}
+        Modification
+        {% endif %}
+         Service
+        </h1>
+    {% endblock %}
+
+    {% block corps %}
+        {{ form_start(formService) }}
+
+        {{ form_row(formService.libelle,{ 'attr': { 'placeholder': "Libellé du service" } }) }}
+        
+            {% if editMode %}
+            <button type="submit" class="btn btn-primary"> Enregistrer Modifications</button>
+            {% else %}
+            <button type="submit" class="btn btn-success">Ajouter Service</button>
+            {% endif %}
+        
+
+        {{ form_end(formService) }}
+    {% endblock %}
+    
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Services {% endblock %}
+
+{% block body %}
+    {% block titre %}
+        <h1>Details</h1>
+    {% endblock %}
+
+    <div class="form-group">
+        <label class="control-label" for="readOnlyInput">Libelle</label>
+        <input class="form-control" id="readOnlyInput" type="text" value="{{service.libelle}}" readonly="">
+    </div>
+
+{% endblock %}
