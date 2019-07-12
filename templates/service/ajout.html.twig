@@ -1,14 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter Service {% endblock %}
+{% block title %}
+
+{% if editMode %}
+Modification
+{% else %}
+Ajout
+{% endif %}
+  Service 
+
+{% endblock %}
 
 {% block body %}
     {% block titre %}
         <h1>
         {% if editMode %}
-        Ajout
-        {% else %}
         Modification
+        {% else %}
+        Ajout
         {% endif %}
          Service
         </h1>

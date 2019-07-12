@@ -1,7 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formulaire {% endblock %}
+{% block title %}
+
+{% if editMode %}
+Modification
+{% else %}
+Ajout
+{% endif %}
+Employer 
+
+{% endblock %}
 
 {% block body %}
+    {% block titre %}
+        <h1>
+        {% if editMode %}
+        Modification
+        {% else %}
+        Ajout
+        {% endif %}
+        Employer
+        </h1>
+    {% endblock %}
+
+    {% block corps %}
+        {{ form_start(formEmployer) }}
+
+        {{ form_row(formEmployer.nom,{ 'attr': { 'placeholder': "Nom Employer" } }) }}
+        {{ form_row(formEmployer.prenom,{ 'attr': { 'placeholder': "Prenom Employer" } }) }}
+        {{ form_row(formEmployer.bornAt) }}
+        {{ form_row(formEmployer.salaire,{ 'attr': { 'placeholder': "Salaire Employer" } }) }}
+        {{ form_row(formEmployer.service) }}
+        
+            {% if editMode %}
+            <button type="submit" class="btn btn-primary"> Enregistrer Modifications</button>
+            {% else %}
+            <button type="submit" class="btn btn-success">Ajouter Employer</button>
+            {% endif %}
+        
+
+        {{ form_end(formEmployer) }}
+    {% endblock %}
+    
 
 {% endblock %}

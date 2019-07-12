@@ -37,7 +37,7 @@ class Employer
     private $bornAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="bigint")
      */
     private $salaire;
 
@@ -100,12 +100,12 @@ class Employer
         return $this;
     }
 
-    public function getSalaire(): ?string
+    public function getSalaire(): ?int
     {
         return $this->salaire;
     }
 
-    public function setSalaire(string $salaire): self
+    public function setSalaire(int $salaire): self
     {
         $this->salaire = $salaire;
 

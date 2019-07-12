@@ -37,6 +37,7 @@ class ServiceController extends AbstractController
             if($form->isSubmitted() && $form->isValid()){
                 $manager->persist($service);
                 $manager->flush();
+                return $this->redirectToRoute('liste_service'); 
             }
             
         
@@ -44,6 +45,15 @@ class ServiceController extends AbstractController
             'formService'=>$form->createView(),
             'editMode'=>$service->getId()!==null
         ]);
+    }
+    /**
+     * @Route("/service/delete/{id}", name="delete_service")
+     */
+    public function suppression(Service $service,ObjectManager $manager)
+    {
+        $manager->remove($service);
+        $manager->flush();
+        return $this->redirectToRoute('liste_service');
     }
     /**
      * @Route("/service/liste", name="liste_service")

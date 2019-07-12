@@ -24,7 +24,7 @@
                         <td scope="row">{{ i }}</td>
                         <td>{{ service.libelle }}</td>
                         <td><a class="btn btn-outline-info" href="{{ path('info_service',{'id':service.id}) }}" role="button">Info</a></td>
-                        <td><a class="btn btn-outline-danger" href="#" role="button">Supprimer</a></td>
+                        <td><a class="btn btn-outline-danger" href="{{ path('delete_service',{'id':service.id}) }}" onclick="confirm('Etes vous sur de vouloir supprimer cet element?')" role="button">Supprimer</a></td>
                         <td><a class="btn btn-outline-primary" href="{{ path('edit_service',{'id':service.id}) }}" role="button">Modifier</a></td>
                     </tr>
                     {% set i=i+1 %}
