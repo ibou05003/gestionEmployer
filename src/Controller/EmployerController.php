@@ -73,13 +73,23 @@ class EmployerController extends AbstractController
                 'editMode'=>$employer->getId()!==null
             ]);
     }
-
     /**
-    * @Route("/employer/{i}", name="employer_infos")
+    * @Route("/employer/delete/{id}", name="delete_employer")
     */
-    public function infos()
+    public function suppression(Employer $employer,ObjectManager $manager)
     {
-        return $this->render('employer/infos.html.twig');
+        $manager->remove($employer);
+        $manager->flush();
+        return $this->redirectToRoute('liste_employer');
+    }
+    /**
+    * @Route("/employer/{id}", name="employer_infos")
+    */
+    public function infos(Employer $employer)
+    {
+        return $this->render('employer/infos.html.twig',[
+            'detail' => $employer
+        ]);
     }
     
 }
