@@ -21,21 +21,21 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ path('acceuil') }}"><i class="fas fa-home"></i>Acceuil </a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-plus-circle"></i>Ajouter</a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ path('ajout_employer') }}">Employer</a>
-                <a class="dropdown-item" href="{{ path('ajout_service') }}">Service</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-list-ul"></i>Lister</a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ path('liste_employer') }}">Employer</a>
-                <a class="dropdown-item" href="{{ path('liste_service') }}">Service</a>
-                </div>
-            </li>
-                <li class="nav-item active">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ path('ajout_service') }}"><i class="fas fa-plus-circle"></i>Ajout</a>
+                    <a class="dropdown-item" href="{{ path('liste_service') }}"><i class="fas fa-list-ul"></i>Lister</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employer</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ path('ajout_employer') }}"><i class="fas fa-plus-circle"></i>Ajout</a>
+                    <a class="dropdown-item" href="{{ path('liste_employer') }}"><i class="fas fa-list-ul"></i>Lister</a>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
                 </li>
             </ul>
@@ -83,6 +83,24 @@
                             $('#naissance').val(data[4]);
                             $('#salaire').val(data[5]);
                             $('#service').val(data[6]);
+
+                            $('#exampleModal').modal.show();
+                    });
+                    var table1=$('#tableau1').DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                        }
+                    });
+                    table1.on('click','.info',function(){
+                        $tr=$(this).closest('tr');
+                        if($($tr).hasClass('child')){
+                            $tr=$tr('.parent');
+                        }
+
+                        var data = table1.row($tr).data();
+                        console.log(data);
+                            $('#valeur').val(data());
+                            
 
                             $('#exampleModal').modal.show();
                     });

@@ -1,7 +1,6 @@
 {% extends 'liste.html.twig' %}
 
 {% block title %}Liste Services {% endblock %}
-
 {% block body %}
     {% block titre %}
         <h1>Liste des Services</h1>
@@ -12,8 +11,7 @@
                 <tr>
                     <th>#</th>
                     <th>Service</th>
-                    <th>Action</th>
-                    <th>Action</th>
+                    <th>Nombre Employers</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -23,14 +21,24 @@
                     <tr>
                         <td scope="row">{{ i }}</td>
                         <td>{{ service.libelle }}</td>
-                        <td><a class="btn btn-outline-info" href="{{ path('info_service',{'id':service.id}) }}" role="button">Info</a></td>
-                        <td><a class="btn btn-outline-danger" href="{{ path('delete_service',{'id':service.id}) }}" onclick="confirm('Etes vous sur de vouloir supprimer cet element?')" role="button">Supprimer</a></td>
-                        <td><a class="btn btn-outline-primary" href="{{ path('edit_service',{'id':service.id}) }}" role="button">Modifier</a></td>
+                        <td>{{ service.employer|length }}</td>
+                        <td>
+                            <a class="btn info btn-outline-info" href="{{ path('info_service',{'id':service.id}) }}" role="button"><i class="far fa-eye"></i></a>
+                            <a class="btn btn-outline-primary" href="{{ path('edit_service',{'id':service.id}) }}" role="button"><i class="far fa-edit"></i></a>
+                            <a class="btn btn-outline-danger"
+                            {% if service.employer|length == 0 %}
+                                href="{{ path('delete_service',{'id':service.id}) }}"
+                                onclick="confirm('Etes vous sur de vouloir supprimer cet element?')"
+                            {% else %}
+                            href="#"
+                            onclick="alert('cet elemment ne peut etre supprimé car il n\'est pas vide')"
+                            {% endif %}  
+                            role="button"><i class="fas fa-trash"></i></a>
+                        </td>
                     </tr>
                     {% set i=i+1 %}
                 {% endfor %}
             </tbody>
         </table>
-    
 
 {% endblock %}

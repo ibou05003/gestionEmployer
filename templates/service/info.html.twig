@@ -1,15 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends 'liste.html.twig' %}
 
-{% block title %}Liste Services {% endblock %}
+{% block title %}Details {% endblock %}
 
 {% block body %}
     {% block titre %}
-        <h1>Details</h1>
+        <h1>Details du service {{service.libelle}}</h1>
     {% endblock %}
+<table id="tableau" class="table nowrap table-bordered text-center table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de Naissance</th>
+            <th>Salaire</th>
+            <th>Service</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tfoot class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de Naissance</th>
+            <th>Salaire</th>
+            <th>Service</th>
+            <th>Action</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        {% set i=1 %}
+        {% for employers in service.employer  %}
+            <tr>
+                <td scope="row">{{ i }}</td>
+                <td>{{ employers.matricule }}</td>
+                <td>{{ employers.nom }}</td>
+                <td>{{ employers.prenom }}</td>
+                <td>{{ employers.bornAt | date ('d/m/Y') }}</td>
+                <td>{{ employers.salaire | number_format(2, '.', ' ') }} F Cfa </td>
+                <td>{{ employers.service.libelle }}</td>
 
-    <div class="form-group">
-        <label class="control-label" for="readOnlyInput">Libelle</label>
-        <input class="form-control" id="readOnlyInput" type="text" value="{{service.libelle}}" readonly="">
-    </div>
-
+                <td> 
+                    <a role="button" href="#" class="btn btn-outline-info detail" data-toggle="modal" data-target="#exampleModal" data-whatever="{{employers.id}}"> <i class="far fa-eye"></i></a>
+                    <a class="btn btn-outline-primary" href="{{ path('edit_employer',{'id':employers.id}) }}" role="button"><i class="far fa-edit"></i></a>
+                    <a class="btn btn-outline-danger" href="{{ path('delete_employer',{'id':employers.id}) }}" onclick="confirm('Etes vous sur de vouloir supprimer cet element?')" role="button"><i class="fas fa-user-times"></i></a>
+                </td>
+            </tr>
+            {% set i=i+1 %}
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-primary" href="#" role="button">Retour</a>
 {% endblock %}

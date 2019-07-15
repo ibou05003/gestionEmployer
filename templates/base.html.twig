@@ -20,20 +20,20 @@
                 <a class="nav-link" href="{{ path('acceuil') }}"><i class="fas fa-home"></i>Acceuil </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-plus-circle"></i>Ajouter</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
                 <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ path('ajout_employer') }}">Employer</a>
-                <a class="dropdown-item" href="{{ path('ajout_service') }}">Service</a>
+                <a class="dropdown-item" href="{{ path('ajout_service') }}"><i class="fas fa-plus-circle"></i>Ajout</a>
+                <a class="dropdown-item" href="{{ path('liste_service') }}"><i class="fas fa-list-ul"></i>Lister</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-list-ul"></i>Lister</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employer</a>
                 <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ path('liste_employer') }}">Employer</a>
-                <a class="dropdown-item" href="{{ path('liste_service') }}">Service</a>
+                <a class="dropdown-item" href="{{ path('ajout_employer') }}"><i class="fas fa-plus-circle"></i>Ajout</a>
+                <a class="dropdown-item" href="{{ path('liste_employer') }}"><i class="fas fa-list-ul"></i>Lister</a>
                 </div>
             </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
                 </li>
             </ul>
